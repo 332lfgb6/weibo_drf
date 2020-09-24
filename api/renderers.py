@@ -159,6 +159,7 @@ class NewWeiboRenderer(renderers.JSONRenderer):
   def render(self, data, accepted_media_type=None, renderer_context=None):
     request = renderer_context.get('request')
     images = request.data.getlist('images')
+    print(type(images), images)
     weibo_id = data.get('id')
     weibo_images = [WeiboImg(uri=image, weibo_id=weibo_id) for image in images]
     WeiboImg.objects.bulk_create(weibo_images)
